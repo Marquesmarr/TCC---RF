@@ -61,12 +61,6 @@ def criar_modelo_binario(congelado=True):
     return model
 
 def fine_tune_model_progressively(model, X_train, y_train, X_val, y_val, datagen, model_path, epochs=50):
-    """
-    Treina em 3 fases:
-    1. Só o classificador (base congelada)
-    2. Descongela últimas 20 camadas
-    3. Descongela últimas 40 camadas (opcional, ajustável)
-    """
     base_model = model.layers[0]
 
     base_model.trainable = False
